@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Type coercion</title>
+</head>
+
+<body>
+  <script>
+    
+    //string coercion of primitives(implicit)
+    console.log('There is an implicit coercion, triggered by the binary + operator, when any operand is a string');
+    console.log('My name is ' + 4);
+    console.log(' ' + false);
+    console.log(123456789n + '78');
+    console.log(true + 'stringValue');
+    console.log('Some string' + null);
+    console.log(undefined + 'Some string');
+
+    console.log('But here a tricky moment. Symbol can only be converted explicitly.');
+    try {
+      console.log(Symbol('a') + 'some string');
+    } catch(e) {
+      console.log('Error message: ', e.message);
+    }
+
+    //string coercion of primitives(explicit)
+    console.log('explicit string coercion of primitives');
+    console.log(String(-123));
+    console.log(String(123456789n));
+    console.log(String('some string'));
+    console.log(String(true));
+    console.log(String(null));
+    console.log(String(undefined));
+    console.log(String(Symbol('a')));
+
+    //numeric coercion of primitives(implicit)
+    let a = 2;
+    let b = '3';
+    console.log(a > b);
+    console.log(a < b);
+    console.log(a >= b);
+    console.log(a <= b);
+
+    console.log(true > 0);
+    console.log(true == 1);
+    console.log(false == 0);
+    console.log(1 != false);
+    console.log(false < true);
+
+    console.log(1 + true);
+    console.log(5 * false);
+    console.log(12 / '3');
+    console.log('12' % 5);
+    console.log(5 / -null);
+    console.log(null / null);
+    console.log(null / 5);
+
+
+    console.log(true | 0);
+    console.log(false & 1);
+    console.log('15' ^ 2);
+
+    console.log(+'3');
+    console.log(+true);
+    console.log(-false);
+
+    console.log('3' == 3);
+    
+    //numeric coercion of primitives(explicit)
+    console.log('explicit numeric coercion of primitives');
+    console.log(Number('123'));
+    console.log(Number('some string'));
+    
+    console.log(Number(undefined));
+    console.log(Number(null));
+    console.log(null == 0);
+    console.log(null == undefined);
+
+    console.log(Number('   12 '));
+    console.log(Number('   -1212 '));
+    console.log(Number('12s'));
+
+    console.log(Number('\n'));
+    
+    console.log(Number(false));
+    console.log(Number(true));
+
+    console.log(Number(NaN));
+    console.log(NaN == NaN)
+
+    console.log(Number(123456789n));
+    console.log(typeof(Number(123456789n)));
+    console.log(typeof(123456789n));
+
+    //boolean coercion of primitives(implicit)
+    let emptyArr = [];
+    if (emptyArr) {
+      console.log('Boolean coercion works');
+    }
+
+    let nonEmptyString = '0';
+    if (nonEmptyString) {
+      console.log('nonEmptyString converted into true');
+    }
+
+    let y = 'hello' && 123;
+    console.log(y);
+
+    //boolean coercion(explicit)_falsy values
+    console.log(Boolean(''));
+    console.log(Boolean(0));
+    console.log(Boolean(-0));
+    console.log(Boolean(NaN));
+    console.log(Boolean(null));
+    console.log(Boolean(undefined));
+    console.log(Boolean(false));
+
+    // truthy values
+    console.log(Boolean({'a' : 5}));
+    console.log(Boolean({}));
+    console.log(Boolean([]));
+    console.log(Boolean([[]]));
+    console.log(Boolean(Symbol('a')));
+    console.log(!!Symbol('a'));
+    console.log(Boolean(function(){}));
+  </script>
+</body>
+
+</html>
